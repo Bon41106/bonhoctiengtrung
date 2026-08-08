@@ -7,157 +7,152 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap');
-        body { font-family: 'Be Vietnam Pro', sans-serif; background-color: #05070b; color: #f8fafc; overflow-x: hidden; perspective: 1000px; }
+        body { font-family: 'Be Vietnam Pro', sans-serif; background-color: #030712; color: #f8fafc; overflow-x: hidden; }
         
-        /* Hiệu ứng không gian nền sao lấp lánh nhẹ */
+        /* Hiệu ứng không gian vũ trụ sâu thẳm */
         .space-bg {
-            background: radial-gradient(circle at 50% 50%, #0f172a 0%, #05070b 100%);
+            background: radial-gradient(circle at 50% 30%, #0f172a 0%, #030712 100%);
         }
 
-        /* Thẻ 3D nghiêng theo không gian */
+        /* Thẻ 3D nổi khối không gian */
         .card-3d {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transform-style: preserve-3d;
-            transition: transform 0.1s ease-out, border-color 0.3s, background 0.3s;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .card-3d:hover {
-            border-color: rgba(16, 185, 129, 0.6);
-            background: rgba(16, 185, 129, 0.05);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(16, 185, 129, 0.2);
+        
+        /* Hiệu ứng khi chạm/nhấn trên điện thoại */
+        .card-3d:active, .card-3d:hover {
+            transform: scale(0.97) translateY(-4px);
+            border-color: rgba(16, 185, 129, 0.8);
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
+            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
 
-        /* Hiệu ứng xoay vòng quỹ đạo nhẹ nhàng */
-        @keyframes floatOrbit {
+        /* Hiệu ứng chuyển động quỹ đạo không gian liên tục */
+        @keyframes floatSpace {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-8px) rotate(1deg); }
+            50% { transform: translateY(-10px) rotate(0.5deg); }
         }
-        .floating-container {
-            animation: floatOrbit 6s ease-in-out infinite;
+        .orbit-float {
+            animation: floatSpace 5s ease-in-out infinite;
+        }
+
+        /* Hiệu ứng phát sáng đèn neon */
+        .neon-glow {
+            text-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
         }
     </style>
 </head>
 <body class="space-bg min-h-screen flex flex-col justify-between selection:bg-emerald-500 selection:text-white">
 
-    <header class="glass-card sticky top-0 z-50 px-6 py-4 flex justify-between items-center bg-black/40 backdrop-blur-md border-b border-white/5">
+    <header class="sticky top-0 z-50 px-6 py-4 flex justify-between items-center bg-black/60 backdrop-blur-xl border-b border-white/10">
         <div class="flex items-center space-x-2">
             <span class="w-3 h-3 bg-emerald-500 rounded-full animate-ping"></span>
-            <h1 class="text-sm md:text-base font-bold tracking-widest text-emerald-400">BỘ NHỚ TIẾNG TRUNG</h1>
+            <h1 class="text-xs md:text-sm font-bold tracking-widest text-emerald-400">BỘ NHỚ TIẾNG TRUNG</h1>
         </div>
-        <nav class="space-x-4 text-xs md:text-sm font-medium text-slate-300">
-            <a href="#" class="hover:text-emerald-400 transition">3D Space</a>
-            <a href="#" class="hover:text-emerald-400 transition">Từ vựng</a>
-            <a href="#" class="text-emerald-400 font-semibold">Admin</a>
+        <nav class="space-x-4 text-xs font-semibold text-slate-300">
+            <a href="#" class="text-emerald-400">3D Space</a>
+            <a href="#" class="hover:text-emerald-400 transition">Từ Vựng</a>
+            <a href="#" class="hover:text-emerald-400 transition">Admin</a>
         </nav>
     </header>
 
-    <main class="flex-1 max-w-5xl w-full mx-auto p-6 flex flex-col items-center justify-center text-center my-auto floating-container">
-        <div class="inline-block bg-emerald-500/10 text-emerald-400 text-xs font-semibold px-4 py-1.5 rounded-full mb-4 border border-emerald-500/20 shadow-[0_0_15px_rgba(16,185,129,0.2)]">
+    <main class="flex-1 max-w-5xl w-full mx-auto p-6 flex flex-col items-center justify-center text-center my-auto orbit-float">
+        
+        <div class="inline-block bg-emerald-500/10 text-emerald-400 text-[11px] font-bold px-4 py-1.5 rounded-full mb-4 border border-emerald-500/30 shadow-[0_0_20px_rgba(16,185,129,0.3)] tracking-wider uppercase">
             ✨ Không gian 3D tương tác Hán Ngữ 1-6
         </div>
-        <h2 class="text-3xl md:text-6xl font-extrabold tracking-tight mb-4 bg-gradient-to-r from-white via-slate-200 to-emerald-400 bg-clip-text text-transparent">
+        
+        <h2 class="text-3xl md:text-6xl font-extrabold tracking-tight mb-3 text-white neon-glow">
             Vũ Trụ Học Tiếng Trung
         </h2>
-        <p class="text-slate-400 max-w-lg mb-10 text-xs md:text-sm">
-            Chạm và chọn quyển sách bên dưới để mở không gian bài khóa, từ mới, luyện viết chữ Hán và AI Tutor.
+        
+        <p class="text-slate-400 max-w-sm md:max-w-md mb-8 text-xs md:text-sm leading-relaxed">
+            Chạm vào một quyển sách để mở không gian bài khóa, từ mới, luyện viết chữ Hán và AI Tutor.
         </p>
 
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 w-full max-w-4xl" id="grid-3d">
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 w-full max-w-3xl">
             
-            <div onclick="openBook(1)" class="card-3d p-6 rounded-3xl cursor-pointer text-left flex flex-col justify-between h-40 md:h-48 group">
+            <div onclick="openBook(1)" class="card-3d p-5 md:p-6 rounded-3xl cursor-pointer text-left flex flex-col justify-between h-36 md:h-44">
                 <div class="flex justify-between items-start">
-                    <span class="text-2xl font-black text-emerald-400 group-hover:scale-110 transition">01</span>
-                    <span class="text-[10px] bg-white/10 px-2 py-0.5 rounded-full text-slate-300">15 Bài</span>
+                    <span class="text-2xl md:text-3xl font-black text-emerald-400">01</span>
+                    <span class="text-[10px] bg-white/10 px-2 py-0.5 rounded-full text-slate-300 font-medium">15 Bài</span>
                 </div>
                 <div>
-                    <h3 class="font-bold text-base md:text-lg text-white mb-1">Hán Ngữ Quyển 1</h3>
-                    <p class="text-[11px] text-slate-400">Nhập môn, Pinyin, cơ bản</p>
+                    <h3 class="font-bold text-sm md:text-base text-white mb-0.5">Hán Ngữ Quyển 1</h3>
+                    <p class="text-[10px] md:text-xs text-slate-400">Nhập môn & Pinyin</p>
                 </div>
             </div>
 
-            <div onclick="openBook(2)" class="card-3d p-6 rounded-3xl cursor-pointer text-left flex flex-col justify-between h-40 md:h-48 group">
+            <div onclick="openBook(2)" class="card-3d p-5 md:p-6 rounded-3xl cursor-pointer text-left flex flex-col justify-between h-36 md:h-44">
                 <div class="flex justify-between items-start">
-                    <span class="text-2xl font-black text-emerald-400 group-hover:scale-110 transition">02</span>
-                    <span class="text-[10px] bg-white/10 px-2 py-0.5 rounded-full text-slate-300">15 Bài</span>
+                    <span class="text-2xl md:text-3xl font-black text-emerald-400">02</span>
+                    <span class="text-[10px] bg-white/10 px-2 py-0.5 rounded-full text-slate-300 font-medium">15 Bài</span>
                 </div>
                 <div>
-                    <h3 class="font-bold text-base md:text-lg text-white mb-1">Hán Ngữ Quyển 2</h3>
-                    <p class="text-[11px] text-slate-400">Ngữ pháp sơ cấp mở rộng</p>
+                    <h3 class="font-bold text-sm md:text-base text-white mb-0.5">Hán Ngữ Quyển 2</h3>
+                    <p class="text-[10px] md:text-xs text-slate-400">Ngữ pháp sơ cấp</p>
                 </div>
             </div>
 
-            <div onclick="openBook(3)" class="card-3d p-6 rounded-3xl cursor-pointer text-left flex flex-col justify-between h-40 md:h-48 group">
+            <div onclick="openBook(3)" class="card-3d p-5 md:p-6 rounded-3xl cursor-pointer text-left flex flex-col justify-between h-36 md:h-44">
                 <div class="flex justify-between items-start">
-                    <span class="text-2xl font-black text-emerald-400 group-hover:scale-110 transition">03</span>
-                    <span class="text-[10px] bg-white/10 px-2 py-0.5 rounded-full text-slate-300">20 Bài</span>
+                    <span class="text-2xl md:text-3xl font-black text-emerald-400">03</span>
+                    <span class="text-[10px] bg-white/10 px-2 py-0.5 rounded-full text-slate-300 font-medium">20 Bài</span>
                 </div>
                 <div>
-                    <h3 class="font-bold text-base md:text-lg text-white mb-1">Hán Ngữ Quyển 3</h3>
-                    <p class="text-[11px] text-slate-400">Trung cấp cơ sở, HSK 3</p>
+                    <h3 class="font-bold text-sm md:text-base text-white mb-0.5">Hán Ngữ Quyển 3</h3>
+                    <p class="text-[10px] md:text-xs text-slate-400">Trung cấp cơ sở</p>
                 </div>
             </div>
 
-            <div onclick="openBook(4)" class="card-3d p-6 rounded-3xl cursor-pointer text-left flex flex-col justify-between h-40 md:h-48 group">
+            <div onclick="openBook(4)" class="card-3d p-5 md:p-6 rounded-3xl cursor-pointer text-left flex flex-col justify-between h-36 md:h-44">
                 <div class="flex justify-between items-start">
-                    <span class="text-2xl font-black text-emerald-400 group-hover:scale-110 transition">04</span>
-                    <span class="text-[10px] bg-white/10 px-2 py-0.5 rounded-full text-slate-300">20 Bài</span>
+                    <span class="text-2xl md:text-3xl font-black text-emerald-400">04</span>
+                    <span class="text-[10px] bg-white/10 px-2 py-0.5 rounded-full text-slate-300 font-medium">20 Bài</span>
                 </div>
                 <div>
-                    <h3 class="font-bold text-base md:text-lg text-white mb-1">Hán Ngữ Quyển 4</h3>
-                    <p class="text-[11px] text-slate-400">Trung cấp nâng cao</p>
+                    <h3 class="font-bold text-sm md:text-base text-white mb-0.5">Hán Ngữ Quyển 4</h3>
+                    <p class="text-[10px] md:text-xs text-slate-400">Trung cấp nâng cao</p>
                 </div>
             </div>
 
-            <div onclick="openBook(5)" class="card-3d p-6 rounded-3xl cursor-pointer text-left flex flex-col justify-between h-40 md:h-48 group">
+            <div onclick="openBook(5)" class="card-3d p-5 md:p-6 rounded-3xl cursor-pointer text-left flex flex-col justify-between h-36 md:h-44">
                 <div class="flex justify-between items-start">
-                    <span class="text-2xl font-black text-emerald-400 group-hover:scale-110 transition">05</span>
-                    <span class="text-[10px] bg-white/10 px-2 py-0.5 rounded-full text-slate-300">26 Bài</span>
+                    <span class="text-2xl md:text-3xl font-black text-emerald-400">05</span>
+                    <span class="text-[10px] bg-white/10 px-2 py-0.5 rounded-full text-slate-300 font-medium">26 Bài</span>
                 </div>
                 <div>
-                    <h3 class="font-bold text-base md:text-lg text-white mb-1">Hán Ngữ Quyển 5</h3>
-                    <p class="text-[11px] text-slate-400">Cao cấp thương mại</p>
+                    <h3 class="font-bold text-sm md:text-base text-white mb-0.5">Hán Ngữ Quyển 5</h3>
+                    <p class="text-[10px] md:text-xs text-slate-400">Cao cấp thương mại</p>
                 </div>
             </div>
 
-            <div onclick="openBook(6)" class="card-3d p-6 rounded-3xl cursor-pointer text-left flex flex-col justify-between h-40 md:h-48 group">
+            <div onclick="openBook(6)" class="card-3d p-5 md:p-6 rounded-3xl cursor-pointer text-left flex flex-col justify-between h-36 md:h-44">
                 <div class="flex justify-between items-start">
-                    <span class="text-2xl font-black text-emerald-400 group-hover:scale-110 transition">06</span>
-                    <span class="text-[10px] bg-white/10 px-2 py-0.5 rounded-full text-slate-300">26 Bài</span>
+                    <span class="text-2xl md:text-3xl font-black text-emerald-400">06</span>
+                    <span class="text-[10px] bg-white/10 px-2 py-0.5 rounded-full text-slate-300 font-medium">26 Bài</span>
                 </div>
                 <div>
-                    <h3 class="font-bold text-base md:text-lg text-white mb-1">Hán Ngữ Quyển 6</h3>
-                    <p class="text-[11px] text-slate-400">Hoàn thiện đỉnh cao HSK</p>
+                    <h3 class="font-bold text-sm md:text-base text-white mb-0.5">Hán Ngữ Quyển 6</h3>
+                    <p class="text-[10px] md:text-xs text-slate-400">Đỉnh cao HSK</p>
                 </div>
             </div>
 
         </div>
     </main>
 
-    <footer class="text-center py-6 text-xs text-slate-500 border-t border-white/5 bg-black/20">
-        &copy; 2026 Bon Hoc Tieng Trung. 3D Interactive Web Experience.
+    <footer class="text-center py-5 text-[11px] text-slate-500 border-t border-white/5 bg-black/40">
+        &copy; 2026 Bon Hoc Tieng Trung. 3D Space Mobile Optimized.
     </footer>
 
     <script>
-        // Hiệu ứng tương tác 3D nghiêng theo cử động ngón tay / chuột
-        document.querySelectorAll('.card-3d').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const xc = rect.width / 2;
-                const yc = rect.height / 2;
-                const dx = (x - xc) / 10;
-                const dy = (y - yc) / 10;
-                card.style.transform = `rotateX(${-dy}deg) rotateY(${dx}deg) scale(1.03)`;
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
-            });
-        });
-
         function openBook(bookNum) {
-            alert('Đang mở không gian 3D: Hán Ngữ Quyển ' + bookNum + '. Chuẩn bị tải bài khóa & từ mới...');
+            alert('🚀 Đang mở Vũ trụ Hán Ngữ Quyển ' + bookNum + '\nHệ thống sẽ tải danh sách Bài khóa & Từ mới ngay lập tức!');
         }
     </script>
 </body>
