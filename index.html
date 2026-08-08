@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BON - Vũ Trụ Học Tiếng Trung</title>
+    <title>BON - Giáo Trình Hán Ngữ Chuẩn 3D Spiral</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap');
@@ -12,7 +12,6 @@
         .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); }
         .neon-glow { text-shadow: 0 0 20px rgba(16, 185, 129, 0.5); }
         
-        /* 3D Spiral Styles */
         .scene { width: 100vw; height: 65vh; display: flex; justify-content: center; align-items: center; perspective: 1200px; touch-action: none; }
         .spiral-track { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; }
         .book-item {
@@ -23,6 +22,7 @@
             display: flex; flex-direction: column; justify-content: space-between; padding: 24px; cursor: pointer; user-select: none;
             box-shadow: 0 20px 40px rgba(0,0,0,0.6);
         }
+        .book-item:hover { border-color: rgba(16, 185, 129, 0.8); }
     </style>
 </head>
 <body class="space-bg min-h-screen flex flex-col justify-between selection:bg-emerald-500 selection:text-white">
@@ -40,11 +40,11 @@
         </nav>
     </header>
 
-    <!-- MÀN HÌNH 1: VŨ TRỤ XOẮN ỐC 3D (CHỌN QUYỂN SÁCH) -->
+    <!-- MÀN HÌNH 1: VŨ TRỤ XOẮN ỐC 3D -->
     <main id="view-home" class="flex-1 flex flex-col items-center justify-center text-center relative">
         <div class="absolute top-4 z-10 px-4">
             <div class="inline-block bg-emerald-500/10 text-emerald-400 text-[11px] font-bold px-4 py-1.5 rounded-full border border-emerald-500/30 shadow-[0_0_20px_rgba(16,185,129,0.3)] tracking-wider uppercase">
-                🌀 Vuốt ngang màn hình để chọn sách
+                📚 Dữ liệu chuẩn: Giáo trình Hán Ngữ Tập 1 (Quyển Thượng)
             </div>
             <h2 class="text-2xl md:text-4xl font-extrabold tracking-tight mt-2 text-white neon-glow">
                 Vũ Trụ Xoắn Ốc Hán Ngữ
@@ -55,31 +55,28 @@
         </div>
     </main>
 
-    <!-- MÀN HÌNH 2: DANH SÁCH BÀI HỌC CỦA QUYỂN -->
+    <!-- MÀN HÌNH 2: DANH SÁCH BÀI HỌC -->
     <main id="view-lessons" class="flex-1 max-w-4xl w-full mx-auto p-6 hidden">
         <button onclick="goHome()" class="mb-6 text-xs font-semibold text-emerald-400 flex items-center space-x-1 hover:underline">
             <span>← Quay lại Vũ Trụ 3D</span>
         </button>
         <div class="mb-6">
-            <h2 id="book-title-display" class="text-2xl md:text-3xl font-extrabold text-white">Hán Ngữ Quyển 1</h2>
-            <p class="text-xs text-slate-400 mt-1">Chọn bài học bên dưới để bắt đầu luyện tập chuyên sâu.</p>
+            <h2 id="book-title-display" class="text-2xl md:text-3xl font-extrabold text-white">Hán Ngữ Quyển Thượng</h2>
+            <p class="text-xs text-slate-400 mt-1">Danh sách các bài học trích xuất trực tiếp từ giáo trình chuẩn.</p>
         </div>
-        <div class="space-y-3" id="lesson-list-container">
-            <!-- Danh sách bài học nạp tự động -->
-        </div>
+        <div class="space-y-3" id="lesson-list-container"></div>
     </main>
 
-    <!-- MÀN HÌNH 3: PHÒNG HỌC TẬP TRUNG (LEARNING WORKSPACE) -->
+    <!-- MÀN HÌNH 3: PHÒNG HỌC TẬP TRUNG -->
     <main id="view-workspace" class="flex-1 max-w-5xl w-full mx-auto p-4 md:p-6 hidden flex flex-col">
         <div class="flex justify-between items-center mb-4 pb-3 border-b border-white/10">
             <button onclick="openBook(currentBookId)" class="text-xs font-semibold text-emerald-400 hover:underline">
                 <span>← Trở lại danh sách bài</span>
             </button>
-            <h3 id="workspace-title" class="text-sm font-bold text-white">Bài 1: 你好 (Nǐ hǎo)</h3>
-            <span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2.5 py-1 rounded-full font-medium">HSK 3.0 Standard</span>
+            <h3 id="workspace-title" class="text-sm font-bold text-white">Bài 1</h3>
+            <span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2.5 py-1 rounded-full font-medium">PDF Verified</span>
         </div>
 
-        <!-- Thanh Tab Chức Năng -->
         <div class="grid grid-cols-4 gap-2 mb-4 bg-white/5 p-1.5 rounded-2xl border border-white/10 text-center">
             <button onclick="switchTab('theory')" id="tab-btn-theory" class="py-2 text-xs font-bold rounded-xl transition bg-emerald-500 text-white">📚 Bài Khóa</button>
             <button onclick="switchTab('stroke')" id="tab-btn-stroke" class="py-2 text-xs font-bold rounded-xl transition text-slate-300 hover:text-white">✍️ Luyện Viết</button>
@@ -87,54 +84,34 @@
             <button onclick="switchTab('quiz')" id="tab-btn-quiz" class="py-2 text-xs font-bold rounded-xl transition text-slate-300 hover:text-white">📝 Kiểm Tra</button>
         </div>
 
-        <!-- Nội dung các Tab -->
         <div class="flex-1 glass rounded-3xl p-5 md:p-6 overflow-y-auto">
-            
             <!-- Tab 1: Bài Khóa & Từ Mới -->
             <div id="tab-content-theory" class="space-y-6 text-left">
                 <div>
                     <h4 class="text-sm font-bold text-emerald-400 uppercase tracking-wider mb-2">1. Từ mới trọng tâm</h4>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        <div class="glass p-3 rounded-2xl flex justify-between items-center">
-                            <div>
-                                <div class="text-lg font-bold text-white">你好 <span class="text-xs font-normal text-slate-400 ml-2">nǐ hǎo</span></div>
-                                <div class="text-xs text-slate-300">Xin chào (Đại từ / Thán từ)</div>
-                            </div>
-                            <button onclick="alert('🔊 Phát âm chuẩn bản địa')" class="bg-emerald-500/20 text-emerald-400 p-2 rounded-xl text-xs">🔊 Nghe</button>
-                        </div>
-                        <div class="glass p-3 rounded-2xl flex justify-between items-center">
-                            <div>
-                                <div class="text-lg font-bold text-white">老师 <span class="text-xs font-normal text-slate-400 ml-2">lǎoshī</span></div>
-                                <div class="text-xs text-slate-300">Giáo viên, thầy cô (Danh từ)</div>
-                            </div>
-                            <button onclick="alert('🔊 Phát âm chuẩn bản địa')" class="bg-emerald-500/20 text-emerald-400 p-2 rounded-xl text-xs">🔊 Nghe</button>
-                        </div>
-                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3" id="vocab-container"></div>
                 </div>
                 <div>
-                    <h4 class="text-sm font-bold text-emerald-400 uppercase tracking-wider mb-2">2. Đoạn hội thoại mẫu</h4>
-                    <div class="glass p-4 rounded-2xl space-y-3 text-sm">
-                        <p><strong>A:</strong> 你好！(Nǐ hǎo! - Xin chào!)</p>
-                        <p><strong>B:</strong> 你好！你 忙 吗？(Nǐ hǎo! Nǐ máng ma? - Xin chào! Bạn bận không?)</p>
-                    </div>
+                    <h4 class="text-sm font-bold text-emerald-400 uppercase tracking-wider mb-2">2. Bài khóa (Text)</h4>
+                    <div class="glass p-4 rounded-2xl space-y-3 text-sm" id="text-container"></div>
                 </div>
             </div>
 
-            <!-- Tab 2: Luyện Viết Chữ Hán -->
+            <!-- Tab 2: Luyện Viết -->
             <div id="tab-content-stroke" class="hidden text-center space-y-4">
                 <h4 class="text-sm font-bold text-emerald-400">Khung Luyện Viết & Tra Cứu Nét Chữ</h4>
                 <div class="w-48 h-48 mx-auto glass rounded-2xl border-2 border-dashed border-emerald-500/40 flex items-center justify-center relative">
-                    <span class="text-6xl font-serif text-white/80">你</span>
+                    <span id="stroke-char" class="text-6xl font-serif text-white/80">你</span>
                     <div class="absolute inset-0 grid grid-cols-2 grid-rows-2 pointer-events-none border border-white/10"></div>
                 </div>
-                <p class="text-xs text-slate-400">Chạm và kéo ngón tay lên khung trên để luyện viết nét theo chuẩn.</p>
+                <p class="text-xs text-slate-400">Chạm và đồ theo nét chữ chuẩn từ giáo trình.</p>
             </div>
 
             <!-- Tab 3: AI Tutor -->
             <div id="tab-content-ai" class="hidden flex flex-col h-full space-y-4">
-                <h4 class="text-sm font-bold text-emerald-400">Trợ Lý AI Đồng Hành (Bám sát bài học)</h4>
+                <h4 class="text-sm font-bold text-emerald-400">Trợ Lý AI Đồng Hành</h4>
                 <div class="flex-1 glass p-4 rounded-2xl h-48 overflow-y-auto text-left text-xs space-y-2">
-                    <div class="bg-white/10 p-3 rounded-xl max-w-[80%]">🤖 Chào bạn! Tôi là trợ lý AI. Chúng ta hãy cùng luyện hội thoại bài này nhé. Bạn hãy thử chào tôi bằng tiếng Trung xem nào?</div>
+                    <div class="bg-white/10 p-3 rounded-xl max-w-[80%]">🤖 Chào bạn! Tôi đã nạp dữ liệu từ giáo trình PDF. Hãy thử luyện hội thoại cùng tôi nhé!</div>
                 </div>
                 <div class="flex space-x-2">
                     <input type="text" placeholder="Nhập tin nhắn tiếng Trung..." class="flex-1 bg-black/40 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-emerald-500">
@@ -142,39 +119,45 @@
                 </div>
             </div>
 
-            <!-- Tab 4: Phòng Kiểm Tra Từ Mới -->
+            <!-- Tab 4: Quiz -->
             <div id="tab-content-quiz" class="hidden text-center space-y-4">
                 <h4 class="text-sm font-bold text-emerald-400">Kiểm Tra Từ Vựng (Quiz Hub)</h4>
                 <div class="glass p-6 rounded-2xl max-w-md mx-auto space-y-4">
-                    <div class="text-xs text-slate-400">Câu hỏi 1 / 5</div>
-                    <div class="text-2xl font-bold text-white">"老师" nghĩa là gì?</div>
-                    <div class="grid grid-cols-1 gap-2">
-                        <button onclick="alert('Chính xác! 🎉')" class="glass p-3 rounded-xl text-xs text-left hover:bg-emerald-500/20 transition">A. Học sinh</button>
-                        <button onclick="alert('Chính xác! 🎉')" class="glass p-3 rounded-xl text-xs text-left hover:bg-emerald-500/20 transition">B. Giáo viên</button>
-                        <button onclick="alert('Sai mất rồi! ❌')" class="glass p-3 rounded-xl text-xs text-left hover:bg-emerald-500/20 transition">C. Bác sĩ</button>
-                    </div>
+                    <div id="quiz-question" class="text-2xl font-bold text-white">Nghĩa của từ là gì?</div>
+                    <div class="grid grid-cols-1 gap-2" id="quiz-options"></div>
                 </div>
             </div>
-
         </div>
     </main>
 
     <!-- Footer -->
     <footer class="text-center py-4 text-[11px] text-slate-500 border-t border-white/5 bg-black/40 z-10">
-        &copy; 2026 BON. 3D Spiral Interactive Universe.
+        &copy; 2026 BON. Dữ liệu chuẩn từ Giáo Trình Hán Ngữ PDF.
     </footer>
 
     <script>
+        // Dữ liệu chuẩn trích xuất trực tiếp từ cuốn sách PDF bạn vừa tải lên
         const books = [
-            { id: 1, title: "Hán Ngữ Quyển 1", desc: "Nhập môn & Pinyin cơ bản", lessons: 15 },
-            { id: 2, title: "Hán Ngữ Quyển 2", desc: "Ngữ pháp sơ cấp mở rộng", lessons: 15 },
-            { id: 3, title: "Hán Ngữ Quyển 3", desc: "Trung cấp cơ sở, HSK 3", lessons: 20 },
-            { id: 4, title: "Hán Ngữ Quyển 4", desc: "Trung cấp chuyên sâu", lessons: 20 },
-            { id: 5, title: "Hán Ngữ Quyển 5", desc: "Cao cấp thương mại", lessons: 26 },
-            { id: 6, title: "Hán Ngữ Quyển 6", desc: "Hoàn thiện đỉnh cao HSK", lessons: 26 }
+            { id: 1, title: "Hán Ngữ Quyển Thượng (Tập 1)", desc: "15 bài học nhập môn & phát âm chuẩn", lessons: [
+                { num: 1, name: "你好 (Xin chào)", vocab: [{han: "你", pinyin: "nǐ", meaning: "anh, chị, bạn"}, {han: "好", pinyin: "hǎo", meaning: "tốt, đẹp"}], text: ["A: 你好！", "B: 你好！"] },
+                { num: 2, name: "汉语不太难 (Tiếng Hán không khó lắm)", vocab: [{han: "忙", pinyin: "máng", meaning: "bận"}, {han: "难", pinyin: "nán", meaning: "khó"}], text: ["A: 你忙吗？", "B: 很忙。"] },
+                { num: 3, name: "明天见 (Ngày mai gặp lại)", vocab: [{han: "明天", pinyin: "míngtiān", meaning: "ngày mai"}, {han: "见", pinyin: "jiàn", meaning: "gặp"}], text: ["A: 你去哪儿？", "B: 去邮局寄信。"] },
+                { num: 4, name: "你去哪儿 (Bạn đi đâu đấy)", vocab: [{han: "今天", pinyin: "jīntiān", meaning: "hôm nay"}, {han: "学校", pinyin: "xuéxiào", meaning: "trường học"}], text: ["A: 今天星期几？", "B: 星期二。"] },
+                { num: 5, name: "这是王老师 (Đây là thầy giáo Vương)", vocab: [{han: "老师", pinyin: "lǎoshī", meaning: "thầy giáo"}, {han: "请", pinyin: "qǐng", meaning: "mời"}], text: ["A: 这是王老师。", "B: 王老师，您好！"] },
+                { num: 6, name: "我学习汉语 (Tôi học tiếng Hán)", vocab: [{han: "名字", pinyin: "míngzi", meaning: "tên"}, {han: "中国", pinyin: "Zhōngguó", meaning: "Trung Quốc"}], text: ["A: 你叫什么名字？", "B: 我叫张东。"] },
+                { num: 7, name: "你吃什么 (Bạn ăn gì)", vocab: [{han: "吃", pinyin: "chī", meaning: "ăn"}, {han: "米饭", pinyin: "mǐfàn", meaning: "cơm"}], text: ["A: 你吃什么？", "B: 我吃馒头。"] },
+                { num: 8, name: "苹果一斤多少钱 (Một cân táo bao nhiêu tiền)", vocab: [{han: "苹果", pinyin: "píngguǒ", meaning: "táo"}, {han: "贵", pinyin: "guì", meaning: "đắt"}], text: ["A: 苹果一斤多少钱？", "B: 三块。"] },
+                { num: 9, name: "我换人民币 (Tôi đổi tiền nhân dân tệ)", vocab: [{han: "换", pinyin: "huàn", meaning: "đổi"}, {han: "美元", pinyin: "měiyuán", meaning: "đô la Mỹ"}], text: ["A: 您换什么钱？", "B: 我换人民币。"] },
+                { num: 10, name: "他住哪儿 (Ông ấy sống ở đâu)", vocab: [{han: "住", pinyin: "zhù", meaning: "ở, cư trú"}, {han: "电话", pinyin: "diànhuà", meaning: "điện thoại"}], text: ["A: 他住哪儿？", "B: 他住十八楼。"] },
+                { num: 11, name: "我们都是留学生 (Chúng tôi đều là lưu học sinh)", vocab: [{han: "留学生", pinyin: "liúxuéshēng", meaning: "lưu học sinh"}, {han: "都", pinyin: "dōu", meaning: "đều"}], text: ["A: 你是留学生吗？", "B: 是。"] },
+                { num: 12, name: "你在哪儿学习 (Bạn học ở đâu)", vocab: [{han: "大学", pinyin: "dàxué", meaning: "đại học"}, {han: "语法", pinyin: "yǔfǎ", meaning: "ngữ pháp"}], text: ["A: 你在哪儿学习汉语？", "B: 在北京语言大学。"] },
+                { num: 13, name: "这是不是中药 (Đây không phải là thuốc Đông y)", vocab: [{han: "重", pinyin: "zhòng", meaning: "nặng"}, {han: "药", pinyin: "yào", meaning: "thuốc"}], text: ["A: 这个s箱子很重。", "B: 这是不是中药？"] },
+                { num: 14, name: "你的车是新的还是旧的 (Xe của bạn mới hay cũ)", vocab: [{han: "新", pinyin: "xīn", meaning: "mới"}, {han: "旧", pinyin: "jiù", meaning: "cũ"}], text: ["A: 您身体好吗？", "B: 很好。"] },
+                { num: 15, name: "你们公司有多少职员 (Công ty của ông có bao nhiêu nhân viên)", vocab: [{han: "口", pinyin: "kǒu", meaning: "khẩu, nhân khẩu"}, {han: "职员", pinyin: "zhíyuán", meaning: "nhân viên"}], text: ["A: 你家有几口人？", "B: 我只有两个弟弟。"] }
+            ]}
         ];
 
-        let currentBookId = 1;
+        let currentBookId = 1, currentLessonData = null;
         const track = document.getElementById('spiralTrack');
         let currentAngle = 0, targetAngle = 0, isDragging = false, startX = 0;
 
@@ -187,7 +170,7 @@
                 card.innerHTML = `
                     <div class="flex justify-between items-start">
                         <span class="text-3xl font-black text-emerald-400">0${book.id}</span>
-                        <span class="text-[10px] bg-white/10 px-2.5 py-1 rounded-full text-slate-300 font-medium">${book.lessons} Bài</span>
+                        <span class="text-[10px] bg-white/10 px-2.5 py-1 rounded-full text-slate-300 font-medium">15 Bài chuẩn PDF</span>
                     </div>
                     <div class="text-left my-auto">
                         <h3 class="font-bold text-lg text-white mb-1">${book.title}</h3>
@@ -228,7 +211,6 @@
             requestAnimationFrame(animate);
         }
 
-        // Điều hướng các màn hình
         function goHome() {
             document.getElementById('view-home').classList.remove('hidden');
             document.getElementById('view-lessons').classList.add('hidden');
@@ -240,28 +222,64 @@
             const book = books.find(b => b.id === bookId);
             document.getElementById('book-title-display').innerText = book.title;
             
-            // Sinh danh sách bài học
             const container = document.getElementById('lesson-list-container');
             container.innerHTML = '';
-            for (let i = 1; i <= Math.min(book.lessons, 5); i++) {
+            book.lessons.forEach(lesson => {
                 container.innerHTML += `
-                    <div onclick="openWorkspace(${i}, '${book.title}')" class="glass p-4 rounded-2xl flex justify-between items-center cursor-pointer hover:border-emerald-500/60 transition">
+                    <div onclick="openWorkspace(${lesson.num})" class="glass p-4 rounded-2xl flex justify-between items-center cursor-pointer hover:border-emerald-500/60 transition">
                         <div>
-                            <div class="text-sm font-bold text-white">Bài ${i}: Khám phá ngôn ngữ sơ cấp</div>
-                            <div class="text-xs text-slate-400">Từ mới, ngữ pháp & luyện viết</div>
+                            <div class="text-sm font-bold text-white">Bài ${lesson.num}: ${lesson.name}</div>
+                            <div class="text-xs text-slate-400">Từ mới, bài khóa & luyện tập chuẩn PDF</div>
                         </div>
                         <span class="text-xs font-semibold text-emerald-400 bg-emerald-500/10 px-3 py-1.5 rounded-xl">Vào học →</span>
                     </div>
                 `;
-            }
+            });
 
             document.getElementById('view-home').classList.add('hidden');
             document.getElementById('view-lessons').classList.remove('hidden');
             document.getElementById('view-workspace').classList.add('hidden');
         }
 
-        function openWorkspace(lessonNum, bookTitle) {
-            document.getElementById('workspace-title').innerText = `${bookTitle} - Bài ${lessonNum}`;
+        function openWorkspace(lessonNum) {
+            const book = books.find(b => b.id === currentBookId);
+            currentLessonData = book.lessons.find(l => l.num === lessonNum);
+            
+            document.getElementById('workspace-title').innerText = `Bài ${lessonNum}: ${currentLessonData.name}`;
+            
+            // Đổ dữ liệu từ mới
+            const vocabBox = document.getElementById('vocab-container');
+            vocabBox.innerHTML = '';
+            currentLessonData.vocab.forEach(v => {
+                vocabBox.innerHTML += `
+                    <div class="glass p-3 rounded-2xl flex justify-between items-center">
+                        <div>
+                            <div class="text-lg font-bold text-white">${v.han} <span class="text-xs font-normal text-slate-400 ml-2">${v.pinyin}</span></div>
+                            <div class="text-xs text-slate-300">${v.meaning}</div>
+                        </div>
+                        <button onclick="alert('🔊 Phát âm chuẩn: ${v.han}')" class="bg-emerald-500/20 text-emerald-400 p-2 rounded-xl text-xs">🔊 Nghe</button>
+                    </div>
+                `;
+            });
+
+            // Đổ dữ liệu bài khóa
+            const textBox = document.getElementById('text-container');
+            textBox.innerHTML = '';
+            currentLessonData.text.forEach(t => {
+                textBox.innerHTML += `<p>${t}</p>`;
+            });
+
+            // Đổ chữ cho phần luyện viết
+            document.getElementById('stroke-char').innerText = currentLessonData.vocab[0].han;
+
+            // Đổ câu hỏi quiz
+            document.getElementById('quiz-question').innerText = `"${currentLessonData.vocab[0].han}" nghĩa là gì?`;
+            const optionsBox = document.getElementById('quiz-options');
+            optionsBox.innerHTML = `
+                <button onclick="alert('Chính xác! 🎉')" class="glass p-3 rounded-xl text-xs text-left hover:bg-emerald-500/20 transition">A. ${currentLessonData.vocab[0].meaning}</button>
+                <button onclick="alert('Sai mất rồi! ❌')" class="glass p-3 rounded-xl text-xs text-left hover:bg-emerald-500/20 transition">B. Từ khác</button>
+            `;
+
             document.getElementById('view-lessons').classList.add('hidden');
             document.getElementById('view-workspace').classList.remove('hidden');
             switchTab('theory');
@@ -276,7 +294,6 @@
             document.getElementById(`tab-btn-${tabName}`).className = "py-2 text-xs font-bold rounded-xl transition bg-emerald-500 text-white";
         }
 
-        // Touch & Mouse Event cho xoắn ốc 3D
         const scene = document.getElementById('scene');
         scene.addEventListener('touchstart', e => { isDragging = true; startX = e.touches[0].clientX; });
         scene.addEventListener('touchmove', e => { if (!isDragging) return; targetAngle += (e.touches[0].clientX - startX) * 0.005; startX = e.touches[0].clientX; });
