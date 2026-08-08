@@ -3,60 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bộ Nhớ Học Tiếng Trung - Hán Ngữ & HSK</title>
+    <title>Bộ Nhớ Học Tiếng Trung - 3D Space & Hán Ngữ</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap');
-        body { font-family: 'Be Vietnam Pro', sans-serif; }
+        body { font-family: 'Be Vietnam Pro', sans-serif; background-color: #0b0f19; color: #f8fafc; }
+        .glass-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .glass-card:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(16, 185, 129, 0.5); }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
-    
+<body class="min-h-screen flex flex-col justify-between selection:bg-emerald-500 selection:text-white">
+
     <!-- Header -->
-    <header class="bg-white/80 backdrop-blur-md border-b border-slate-100 sticky top-0 z-50 px-6 py-4 flex justify-between items-center">
-        <h1 class="text-lg font-bold text-emerald-600 tracking-wide">Bộ Nhớ Tiếng Trung</h1>
-        <nav class="space-x-4 text-sm font-medium text-slate-600">
-            <a href="#" class="hover:text-emerald-600 transition">Trang chủ</a>
-            <a href="#" class="hover:text-emerald-600 transition">Khóa học</a>
-            <a href="#" class="hover:text-emerald-600 transition">Admin</a>
+    <header class="glass-card sticky top-0 z-50 px-6 py-4 flex justify-between items-center border-x-0 border-t-0">
+        <div class="flex items-center space-x-2">
+            <span class="w-3 h-3 bg-emerald-500 rounded-full animate-pulse"></span>
+            <h1 class="text-base font-bold tracking-wider text-white">BỘ NHỚ TIẾNG TRUNG</h1>
+        </div>
+        <nav class="space-x-6 text-sm font-medium text-slate-300">
+            <a href="#" class="hover:text-emerald-400 transition">Không gian 3D</a>
+            <a href="#" class="hover:text-emerald-400 transition">Từ vựng</a>
+            <a href="#" class="hover:text-emerald-400 transition text-emerald-400 font-semibold">Admin Panel</a>
         </nav>
     </header>
 
-    <!-- Main Content -->
-    <main class="flex-1 max-w-4xl w-full mx-auto p-6 flex flex-col items-center justify-center text-center">
-        <div class="inline-block bg-emerald-50 text-emerald-600 text-xs font-semibold px-3 py-1 rounded-full mb-4">
-            Phiên bản 3D Space & Hán Ngữ 1-6
+    <!-- Main 3D Space Hub -->
+    <main class="flex-1 max-w-6xl w-full mx-auto p-6 flex flex-col items-center justify-center text-center my-auto">
+        <div class="inline-block bg-emerald-500/10 text-emerald-400 text-xs font-semibold px-4 py-1.5 rounded-full mb-4 border border-emerald-500/20">
+            Hệ thống 6 Quyển Hán Ngữ & HSK 3.0 (Học Offline PWA)
         </div>
-        <h2 class="text-3xl md:text-5xl font-bold text-slate-900 mb-4">
-            Chinh phục tiếng Trung <span class="text-emerald-600">thế hệ mới</span>
+        <h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-4">
+            Chọn Quyển Hán Ngữ <span class="text-emerald-400">Không Gian 3D</span>
         </h2>
-        <p class="text-slate-500 max-w-lg mb-8 text-sm md:text-base">
-            Hệ thống học tập thông minh tích hợp luyện viết, AI trợ lý ảo và phòng kiểm tra từ vựng chuẩn HSK 3.0.
+        <p class="text-slate-400 max-w-xl mb-10 text-sm md:text-base">
+            Xoay không gian, chọn bài học, luyện viết chữ Hán, tương tác cùng AI và kiểm tra từ mới mượt mà.
         </p>
 
-        <!-- Interactive Hub Preview -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full text-left">
-            <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition">
-                <div class="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center font-bold mb-4">📖</div>
-                <h3 class="font-semibold text-slate-800 mb-1">6 Quyển Hán Ngữ</h3>
-                <p class="text-xs text-slate-500">Hệ thống bài khóa và từ mới chuẩn xác, tự động hóa toàn diện.</p>
+        <!-- 3D Orbit Books Grid Simulation -->
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-5 w-full max-w-4xl">
+            <div onclick="alert('Đang mở không gian Hán Ngữ Quyển 1...')" class="glass-card p-6 rounded-3xl cursor-pointer transition transform hover:-translate-y-1 text-left flex flex-col justify-between h-40">
+                <div class="flex justify-between items-start">
+                    <span class="text-2xl font-bold text-emerald-400">01</span>
+                    <span class="text-xs bg-white/10 px-2 py-1 rounded text-slate-300">15 Bài</span>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg text-white mb-1">Hán Ngữ Quyển 1</h3>
+                    <p class="text-xs text-slate-400">Nhập môn, Pinyin, cơ bản</p>
+                </div>
             </div>
-            <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition">
-                <div class="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center font-bold mb-4">✍️</div>
-                <h3 class="font-semibold text-slate-800 mb-1">Luyện viết & Quiz</h3>
-                <p class="text-xs text-slate-500">Kiểm tra từ mới đa chiều và rèn luyện nét chữ Hán trực quan.</p>
+
+            <div onclick="alert('Đang mở không gian Hán Ngữ Quyển 2...')" class="glass-card p-6 rounded-3xl cursor-pointer transition transform hover:-translate-y-1 text-left flex flex-col justify-between h-40">
+                <div class="flex justify-between items-start">
+                    <span class="text-2xl font-bold text-emerald-400">02</span>
+                    <span class="text-xs bg-white/10 px-2 py-1 rounded text-slate-300">15 Bài</span>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg text-white mb-1">Hán Ngữ Quyển 2</h3>
+                    <p class="text-xs text-slate-400">Mở rộng ngữ pháp sơ cấp</p>
+                </div>
             </div>
-            <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition">
-                <div class="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center font-bold mb-4">🤖</div>
-                <h3 class="font-semibold text-slate-800 mb-1">AI Language Partner</h3>
-                <p class="text-xs text-slate-500">Trò chuyện và sửa lỗi ngữ pháp cùng trợ lý ảo thông minh.</p>
+
+            <div onclick="alert('Đang mở không gian Hán Ngữ Quyển 3...')" class="glass-card p-6 rounded-3xl cursor-pointer transition transform hover:-translate-y-1 text-left flex flex-col justify-between h-40">
+                <div class="flex justify-between items-start">
+                    <span class="text-2xl font-bold text-emerald-400">03</span>
+                    <span class="text-xs bg-white/10 px-2 py-1 rounded text-slate-300">20 Bài</span>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg text-white mb-1">Hán Ngữ Quyển 3</h3>
+                    <p class="text-xs text-slate-400">Trung cấp sơ khai, HSK 3</p>
+                </div>
+            </div>
+
+            <div onclick="alert('Đang mở không gian Hán Ngữ Quyển 4...')" class="glass-card p-6 rounded-3xl cursor-pointer transition transform hover:-translate-y-1 text-left flex flex-col justify-between h-40">
+                <div class="flex justify-between items-start">
+                    <span class="text-2xl font-bold text-emerald-400">04</span>
+                    <span class="text-xs bg-white/10 px-2 py-1 rounded text-slate-300">20 Bài</span>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg text-white mb-1">Hán Ngữ Quyển 4</h3>
+                    <p class="text-xs text-slate-400">Trung cấp chuyên sâu</p>
+                </div>
+            </div>
+
+            <div onclick="alert('Đang mở không gian Hán Ngữ Quyển 5...')" class="glass-card p-6 rounded-3xl cursor-pointer transition transform hover:-translate-y-1 text-left flex flex-col justify-between h-40">
+                <div class="flex justify-between items-start">
+                    <span class="text-2xl font-bold text-emerald-400">05</span>
+                    <span class="text-xs bg-white/10 px-2 py-1 rounded text-slate-300">26 Bài</span>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg text-white mb-1">Hán Ngữ Quyển 5</h3>
+                    <p class="text-xs text-slate-400">Cao cấp, văn phong thương mại</p>
+                </div>
+            </div>
+
+            <div onclick="alert('Đang mở không gian Hán Ngữ Quyển 6...')" class="glass-card p-6 rounded-3xl cursor-pointer transition transform hover:-translate-y-1 text-left flex flex-col justify-between h-40">
+                <div class="flex justify-between items-start">
+                    <span class="text-2xl font-bold text-emerald-400">06</span>
+                    <span class="text-xs bg-white/10 px-2 py-1 rounded text-slate-300">26 Bài</span>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg text-white mb-1">Hán Ngữ Quyển 6</h3>
+                    <p class="text-xs text-slate-400">Hoàn thiện đỉnh cao HSK</p>
+                </div>
             </div>
         </div>
     </main>
 
     <!-- Footer -->
-    <footer class="text-center py-6 text-xs text-slate-400 border-t border-slate-100">
-        &copy; 2026 Bon Hoc Tieng Trung. All rights reserved.
+    <footer class="text-center py-6 text-xs text-slate-500 border-t border-white/5">
+        &copy; 2026 Bon Hoc Tieng Trung. All rights reserved. Powered by Admin Control.
     </footer>
 
 </body>
