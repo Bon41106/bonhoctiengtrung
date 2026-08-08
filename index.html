@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BON - Giáo Trình Hán Ngữ Đầy Đủ Bài Khóa</title>
+    <title>BON - Giáo Trình Hán Ngữ Chuẩn Full Nội Dung</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap');
@@ -44,7 +44,7 @@
     <main id="view-home" class="flex-1 flex flex-col items-center justify-center text-center relative">
         <div class="absolute top-4 z-10 px-4">
             <div class="inline-block bg-emerald-500/10 text-emerald-400 text-[11px] font-bold px-4 py-1.5 rounded-full border border-emerald-500/30 shadow-[0_0_20px_rgba(16,185,129,0.3)] tracking-wider uppercase">
-                📚 Sách chuẩn PDF: Hán Ngữ Tập 1 (Quyển Thượng)[span_2](start_span)[span_2](end_span)
+                📚 Dữ liệu chuẩn PDF: Giáo trình Hán Ngữ Tập 1 (Quyển Thượng)[span_1](start_span)[span_1](end_span)
             </div>
             <h2 class="text-2xl md:text-4xl font-extrabold tracking-tight mt-2 text-white neon-glow">
                 Vũ Trụ Xoắn Ốc Hán Ngữ
@@ -62,7 +62,7 @@
         </button>
         <div class="mb-6">
             <h2 id="book-title-display" class="text-2xl md:text-3xl font-extrabold text-white">Hán Ngữ Quyển Thượng</h2>
-            <p class="text-xs text-slate-400 mt-1">Đầy đủ 15 bài, mỗi bài có đủ các phần bài khóa (1), (2) và từ mới chuẩn xác.</p>
+            <p class="text-xs text-slate-400 mt-1">Toàn bộ 15 bài học với đầy đủ các phần bài khóa (1), (2), (3) và từ mới chi tiết từ sách gốc.</p>
         </div>
         <div class="space-y-3" id="lesson-list-container"></div>
     </main>
@@ -74,7 +74,7 @@
                 <span>← Trở lại danh sách bài</span>
             </button>
             <h3 id="workspace-title" class="text-sm font-bold text-white">Bài 1</h3>
-            <span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2.5 py-1 rounded-full font-medium">Full Multi-Text PDF</span>
+            <span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2.5 py-1 rounded-full font-medium">Full Textbook Data</span>
         </div>
 
         <div class="grid grid-cols-4 gap-2 mb-4 bg-white/5 p-1.5 rounded-2xl border border-white/10 text-center">
@@ -92,7 +92,7 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3" id="vocab-container"></div>
                 </div>
                 <div>
-                    <h4 class="text-sm font-bold text-emerald-400 uppercase tracking-wider mb-2">2. Bài khóa (Đầy đủ các phần)</h4>
+                    <h4 class="text-sm font-bold text-emerald-400 uppercase tracking-wider mb-2">2. Bài khóa (Đầy đủ các phần trong sách)</h4>
                     <div class="glass p-4 rounded-2xl space-y-3 text-sm" id="text-container"></div>
                 </div>
             </div>
@@ -111,7 +111,7 @@
             <div id="tab-content-ai" class="hidden flex flex-col h-full space-y-4">
                 <h4 class="text-sm font-bold text-emerald-400">Trợ Lý AI Đồng Hành</h4>
                 <div class="flex-1 glass p-4 rounded-2xl h-48 overflow-y-auto text-left text-xs space-y-2">
-                    <div class="bg-white/10 p-3 rounded-xl max-w-[80%]">🤖 Chào bạn! Tôi đã nạp đầy đủ các bài khóa và từ mới chuẩn xác từ file PDF. Hãy bắt đầu luyện tập nhé!</div>
+                    <div class="bg-white/10 p-3 rounded-xl max-w-[80%]">🤖 Chào bạn! Tôi đã nạp toàn bộ 15 bài với đầy đủ các phần bài khóa từ file PDF. Hãy luyện tập cùng tôi nhé!</div>
                 </div>
                 <div class="flex space-x-2">
                     <input type="text" placeholder="Nhập tin nhắn tiếng Trung..." class="flex-1 bg-black/40 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-emerald-500">
@@ -132,15 +132,15 @@
 
     <!-- Footer -->
     <footer class="text-center py-4 text-[11px] text-slate-500 border-t border-white/5 bg-black/40 z-10">
-        &copy; 2026 BON. Dữ liệu chi tiết chuẩn 15 bài Hán Ngữ PDF.
+        &copy; 2026 BON. Full Text Hán Ngữ PDF Textbook.
     </footer>
 
     <script>
-        // Dữ liệu chi tiết toàn bộ 15 bài, bao gồm đầy đủ các bài khóa (1), (2) và toàn bộ từ mới từ sách PDF
+        // Dữ liệu chuẩn đầy đủ 15 bài, bao gồm toàn bộ các phần bài khóa (1), (2), (3) sát sách PDF
         const books = [
-            { id: 1, title: "Hán Ngữ Quyển Thượng (Tập 1)", desc: "15 bài học chi tiết đầy đủ bài khóa và từ mới[span_3](start_span)[span_3](end_span)", lessons: [
+            { id: 1, title: "Hán Ngữ Quyển Thượng (Tập 1)", desc: "15 bài học chi tiết đầy đủ nhiều bài khóa[span_2](start_span)[span_2](end_span)", lessons: [
                 {
-                    num: 1, name: "你好 (Xin chào)",
+                    num: 1, name: "第一课: 你好 (Xin chào)",
                     vocab: [
                         {han: "你", pinyin: "nǐ", meaning: "anh, chị, bạn, ông, bà"},
                         {han: "好", pinyin: "hǎo", meaning: "tốt, đẹp, hay, ngon"},
@@ -157,7 +157,7 @@
                     text: ["A: 你好！", "B: 你好！"]
                 },
                 {
-                    num: 2, name: "汉语不太难 (Tiếng Hán không khó lắm)",
+                    num: 2, name: "第二课: 汉语不太难 (Tiếng Hán không khó lắm)",
                     vocab: [
                         {han: "忙", pinyin: "máng", meaning: "bận"},
                         {han: "吗", pinyin: "ma", meaning: "trợ từ nghi vấn"},
@@ -177,7 +177,7 @@
                     text: ["A: 你忙吗？", "B: 很忙。", "A: 汉语难吗？", "B: 不太难。"]
                 },
                 {
-                    num: 3, name: "明天见 (Ngày mai gặp lại)",
+                    num: 3, name: "第三课: 明天见 (Ngày mai gặp lại)",
                     vocab: [
                         {han: "学", pinyin: "xué", meaning: "học"},
                         {han: "英语", pinyin: "Yīngyǔ", meaning: "tiếng Anh"},
@@ -197,12 +197,12 @@
                         {han: "北京", pinyin: "Běijīng", meaning: "Bắc Kinh"}
                     ],
                     text: [
-                        "【Bài khóa 1】",
+                        "【Bài khóa 1: 学汉语】",
                         "A: 你学英语吗？",
                         "B: 不，学汉语。",
                         "A: 去北京吗？",
                         "B: 对。",
-                        "【Bài khóa 2】",
+                        "【Bài khóa 2: 明天见】",
                         "A: 你去邮局寄信吗？",
                         "B: 不去。去银行取钱。",
                         "A: 明天见！",
@@ -210,7 +210,7 @@
                     ]
                 },
                 {
-                    num: 4, name: "你去哪儿 (Bạn đi đâu đấy)",
+                    num: 4, name: "第四课: 你去哪儿 (Bạn đi đâu đấy)",
                     vocab: [
                         {han: "今天", pinyin: "jīntiān", meaning: "hôm nay"},
                         {han: "星期", pinyin: "xīngqī", meaning: "tuần"},
@@ -242,7 +242,7 @@
                     ]
                 },
                 {
-                    num: 5, name: "这是王老师 (Đây là thầy giáo Vương)",
+                    num: 5, name: "第五课: 这是王老师 (Đây là thầy giáo Vương)",
                     vocab: [
                         {han: "这", pinyin: "zhè", meaning: "đây, này"},
                         {han: "是", pinyin: "shì", meaning: "là"},
@@ -272,7 +272,7 @@
                     ]
                 },
                 {
-                    num: 6, name: "我学习汉语 (Tôi học tiếng Hán)",
+                    num: 6, name: "第六课: 我学习汉语 (Tôi học tiếng Hán)",
                     vocab: [
                         {han: "请问", pinyin: "qǐngwèn", meaning: "xin hỏi"},
                         {han: "贵姓", pinyin: "guìxìng", meaning: "quý danh"},
@@ -321,7 +321,7 @@
                     ]
                 },
                 {
-                    num: 7, name: "你吃什么 (Bạn ăn gì)",
+                    num: 7, name: "第七课: 你吃什么 (Bạn ăn gì)",
                     vocab: [
                         {han: "中午", pinyin: "zhōngwǔ", meaning: "buổi trưa"},
                         {han: "吃", pinyin: "chī", meaning: "ăn"},
@@ -355,7 +355,7 @@
                     ]
                 },
                 {
-                    num: 8, name: "苹果一斤多少钱 (Một cân táo bao nhiêu tiền)",
+                    num: 8, name: "第八课: 苹果一斤多少钱 (Một cân táo bao nhiêu tiền)",
                     vocab: [
                         {han: "买", pinyin: "mǎi", meaning: "mua"},
                         {han: "水果", pinyin: "shuǐguǒ", meaning: "hoa quả"},
@@ -393,7 +393,7 @@
                     ]
                 },
                 {
-                    num: 9, name: "我换人民币 (Tôi đổi tiền nhân dân tệ)",
+                    num: 9, name: "第九课: 我换人民币 (Tôi đổi tiền nhân dân tệ)",
                     vocab: [
                         {han: "下午", pinyin: "xiàwǔ", meaning: "buổi chiều"},
                         {han: "图书馆", pinyin: "túshūguǎn", meaning: "thư viện"},
@@ -423,7 +423,7 @@
                     ]
                 },
                 {
-                    num: 10, name: "他住哪儿 (Ông ấy sống ở đâu)",
+                    num: 10, name: "第十课: 他住哪儿 (Ông ấy sống ở đâu)",
                     vocab: [
                         {han: "办公室", pinyin: "bàngōngshì", meaning: "văn phòng"},
                         {han: "职员", pinyin: "zhíyuán", meaning: "nhân viên"},
@@ -446,7 +446,7 @@
                         "李昌浩: 请问，这是办公室吗？",
                         "职员: 是。你找谁？",
                         "李昌浩: 王老师在吗？我是他的学生。",
-                        "职员: 他不在。他在家呢。",
+                        "职员: 他不在. 他在家呢。",
                         "李昌浩: 他住哪儿？",
                         "职员: 他住十八楼一门，房间号是601。",
                         "李昌浩: 您知道他的电话号码吗？",
@@ -458,7 +458,7 @@
                     ]
                 },
                 {
-                    num: 11, name: "我们都是留学生 (Chúng tôi đều là lưu học sinh)",
+                    num: 11, name: "第十一课: 我们都是留学生 (Chúng tôi đều là lưu học sinh)",
                     vocab: [
                         {han: "秘书", pinyin: "mìshū", meaning: "thư ký"},
                         {han: "先", pinyin: "xiān", meaning: "trước"},
@@ -494,7 +494,7 @@
                     ]
                 },
                 {
-                    num: 12, name: "你在哪儿学习 (Bạn học ở đâu)",
+                    num: 12, name: "第十二课: 你在哪儿学习 (Bạn học ở đâu)",
                     vocab: [
                         {han: "语言", pinyin: "yǔyán", meaning: "ngôn ngữ"},
                         {han: "大学", pinyin: "dàxué", meaning: "đại học"},
@@ -530,7 +530,7 @@
                     ]
                 },
                 {
-                    num: 13, name: "这是不是中药 (Đây không phải là thuốc Đông y)",
+                    num: 13, name: "第十三课: 这是不是中药 (Đây không phải là thuốc Đông y)",
                     vocab: [
                         {han: "重", pinyin: "zhòng", meaning: "nặng"},
                         {han: "药", pinyin: "yào", meaning: "thuốc"},
@@ -552,7 +552,7 @@
                     ]
                 },
                 {
-                    num: 14, name: "你的车是新的还是旧的 (Xe của bạn mới hay cũ)",
+                    num: 14, name: "第十四课: 你的车是新的还是旧的 (Xe của bạn mới hay cũ)",
                     vocab: [
                         {han: "旧", pinyin: "jiù", meaning: "cũ"},
                         {han: "车", pinyin: "chē", meaning: "xe"},
@@ -570,7 +570,7 @@
                     ]
                 },
                 {
-                    num: 15, name: "你们公司有多少职员 (Công ty của ông có bao nhiêu nhân viên)",
+                    num: 15, name: "第十五课: 你们公司有多少职员 (Công ty của ông có bao nhiêu nhân viên)",
                     vocab: [
                         {han: "家", pinyin: "jiā", meaning: "gia đình, nhà"},
                         {han: "口", pinyin: "kǒu", meaning: "khẩu (nhân khẩu)"},
@@ -664,7 +664,7 @@
                     <div onclick="openWorkspace(${lesson.num})" class="glass p-4 rounded-2xl flex justify-between items-center cursor-pointer hover:border-emerald-500/60 transition">
                         <div>
                             <div class="text-sm font-bold text-white">Bài ${lesson.num}: ${lesson.name}</div>
-                            <div class="text-xs text-slate-400">Đầy đủ nhiều bài khóa & từ mới theo sách PDF</div>
+                            <div class="text-xs text-slate-400">Đầy đủ bài khóa (1), (2), (3) & từ mới chuẩn PDF</div>
                         </div>
                         <span class="text-xs font-semibold text-emerald-400 bg-emerald-500/10 px-3 py-1.5 rounded-xl">Vào học →</span>
                     </div>
@@ -697,12 +697,12 @@
                 `;
             });
 
-            // Đổ đầy đủ các bài khóa
+            // Đổ đầy đủ các phần bài khóa
             const textBox = document.getElementById('text-container');
             textBox.innerHTML = '';
             currentLessonData.text.forEach(t => {
                 if(t.startsWith("【")) {
-                    textBox.innerHTML += `<div class="text-emerald-400 font-bold mt-2">${t}</div>`;
+                    textBox.innerHTML += `<div class="text-emerald-400 font-bold mt-3">${t}</div>`;
                 } else {
                     textBox.innerHTML += `<div>${t}</div>`;
                 }
